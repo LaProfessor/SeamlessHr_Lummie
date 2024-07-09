@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#search-section">Search</a></li>
+            <li><a href="#recipes-list">Recipes</a></li>
+            <li><a href="#add-recipe-form">Add Recipe</a></li>
+        </ul>
+    </nav>
+    <h1>Recipes App</h1>
+    <div id="search-section">
+        <input type="text" id="search-input" placeholder="Search for recipes...">
+    </div>
+    <div id="recipes-list"></div>
+    <div id="recipe-details"></div>
+    <div id="add-recipe-form">
+        <h2>Add New Recipe</h2>
+        <form>
+            <input type="text" id="new-title" placeholder="Title" required>
+            <textarea id="new-ingredients" placeholder="Ingredients" required></textarea>
+            <textarea id="new-instructions" placeholder="Instructions" required></textarea>
+            <input type="url" id="new-video-url" placeholder="Video URL" required>
+            <input type="url" id="new-image-url" placeholder="Image URL" required>
+            <button type="button" id="add-recipe-button">Add Recipe</button>
+        </form>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
