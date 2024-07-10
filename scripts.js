@@ -68,18 +68,30 @@ document.getElementById('add-recipe-button').addEventListener('click', function(
     const ingredients = document.getElementById('new-ingredients').value;
     const instructions = document.getElementById('new-instructions').value;
     const videoURL = document.getElementById('new-video-url').value;
-    const imageURL = document.getElementById('new-image-url').value;
+    const imageFile = document.getElementById('new-image').files[0];
 
-    const newRecipe = { title, ingredients, instructions, videoURL, imageURL };
-    recipes.push(newRecipe);
-    displayRecipes(recipes);
+    // Validate form inputs
+    if (!title || !ingredients || !instructions || !videoURL || !imageFile) {
+        alert('Please fill out all fields.');
+        return;
+    }
 
-    // Clear the form
-    document.getElementById('new-title').value = '';
-    document.getElementById('new-ingredients').value = '';
-    document.getElementById('new-instructions').value = '';
-    document.getElementById('new-video-url').value = '';
-    document.getElementById('new-image-url').value = '';
+    // Handle image file upload
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        const imageURL = event.target.result;
+        const newRecipe = { title, ingredients, instructions, videoURL, imageURL };
+        recipes.push(newRecipe);
+        displayRecipes(recipes);
+
+        // Clear the form
+        document.getElementById('new-title').value = '';
+        document.getElementById('new-ingredients').value = '';
+        document.getElementById('new-instructions').value = '';
+        document.getElementById('new-video-url').value = '';
+        document.getElementById('new-image').value = '';
+    };
+    reader.readAsDataURL(imageFile);
 });
 
 function deleteRecipe(index) {
